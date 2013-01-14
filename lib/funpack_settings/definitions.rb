@@ -1,31 +1,31 @@
-require 'funpack_settings'
-
-class FunpackSettings::Definitions
-  def initialize(defs)
-    @defs = defs
-  end
-
-  def to_h(values = {})
-    settings = {}
-    @defs.each do |defn|
-      type, name, default = defn['type'], defn['name'], defn['default']
-
-      settings[name] = value(type, default, values[name])
+module FunpackSettings
+  class Definitions
+    def initialize(defs)
+      @defs = defs
     end
 
-    settings
-  end
+    def to_h(values = {})
+      settings = {}
+      @defs.each do |defn|
+        type, name, default = defn['type'], defn['name'], defn['default']
 
-  def value(type, default, value)
-    case type
-    when 'boolean'
-      !value.nil?
+        settings[name] = value(type, default, values[name])
+      end
 
-    when 'integer'
-      Integer(value) rescue default
+      settings
+    end
 
-    else
-      value || default
+    def value(type, default, value)
+      case type
+      when 'boolean'
+        !value.nil?
+
+      when 'integer'
+        Integer(value) rescue default
+
+      else
+        value || default
+      end
     end
   end
 end
