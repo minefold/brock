@@ -1,4 +1,4 @@
-module FunpackSettings
+module Brock
   class Definitions
     def initialize(defs)
       @defs = defs

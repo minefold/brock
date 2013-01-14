@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'funpack_settings/html_renderer'
+require 'brock/html_renderer'
 
 RSpec::Matchers.define :match_html do |expected|
   def strip_non_html(s)
@@ -15,8 +15,8 @@ RSpec::Matchers.define :match_html do |expected|
   end
 end
 
-describe FunpackSettings::HtmlRenderer do
-  subject { FunpackSettings::HtmlRenderer.new }
+describe Brock::HtmlRenderer do
+  subject { Brock::HtmlRenderer.new }
 
   it "renders string setting" do
     html = subject.setting(

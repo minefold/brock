@@ -1,4 +1,6 @@
-# Funpack Settings
+# Brock
+
+![Brock](http://upload.wikimedia.org/wikipedia/en/7/71/DP-Brock.png)
 
 Generate HTML from definitions. Generate settings from params
 

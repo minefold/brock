@@ -1,9 +1,9 @@
 require 'spec_helper'
-require 'funpack_settings/definitions'
+require 'brock/definitions'
 
-describe FunpackSettings::Definitions do
+describe Brock::Definitions do
   def defs(defs)
-    FunpackSettings::Definitions.new(defs)
+    Brock::Definitions.new(defs)
   end
 
   it "uses default when no value is present" do

@@ -1,11 +1,11 @@
 # -*- encoding: utf-8 -*-
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'funpack_settings/version'
+require 'brock/version'
 
 Gem::Specification.new do |gem|
-  gem.name          = "funpack_settings"
-  gem.version       = FunpackSettings::VERSION
+  gem.name          = 'brock'
+  gem.version       = Brock::VERSION
   gem.authors       = ["Dave Newman"]
   gem.email         = ["dave@minefold.com"]
   gem.description   = %q{Test Minefold funpacks}
@@ -23,6 +23,6 @@ Gem::Specification.new do |gem|
     LICENSE.txt
     README.md
     Rakefile
-    funpack_settings.gemspec
+    brock.gemspec
   ) + Dir["lib/**/*"]
 end

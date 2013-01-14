@@ -1,4 +1,4 @@
-module FunpackSettings
+module Brock
   class HtmlRenderer
 
     def setting(setting)
