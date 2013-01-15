@@ -21,7 +21,6 @@ Gem::Specification.new do |gem|
   gem.files = %w(
     Gemfile
     README.md
-    Rakefile
     brock.gemspec
   ) + Dir['{lib,share,spec}/**/*']
 end
