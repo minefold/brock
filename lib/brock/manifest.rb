@@ -31,9 +31,9 @@ module Brock
       end
     end
 
-    def to_html(values)
+    def to_html(values = {})
       fields.map do |field|
-        field.to_html(values.fetch(field.name))
+        field.to_html(values[field.name])
       end.join("\n")
     end
 
