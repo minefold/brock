@@ -12,16 +12,16 @@ Gem::Specification.new do |gem|
   gem.summary       = %q{Test Minefold funpacks}
   gem.homepage      = "https://minefold.com"
 
-  gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
+  gem.test_files    = gem.files.grep(%r{^spec/})
   gem.require_paths = ["lib"]
 
   gem.add_development_dependency 'rspec'
+  gem.add_development_dependency 'nokogiri'
 
   gem.files = %w(
     Gemfile
-    LICENSE.txt
     README.md
     Rakefile
     brock.gemspec
-  ) + Dir["lib/**/*"]
+  ) + Dir['{lib,share,spec}/**/*']
 end

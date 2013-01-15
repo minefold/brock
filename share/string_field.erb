@@ -1,0 +1,16 @@
+<div class="control-group brock-field brock-field-string">
+  <label class="control-label brock-label"><%= label %></label>
+  <div class="controls">
+    <input class="brock-field"
+           type="text"
+           name="brock[<%= name %>]"
+           placeholder="<%= default %>"
+           <% if value %>
+             value="<%= value %>"
+           <% end %>
+    />
+    <% if description %>
+      <p class="help-block brock-description"><%= description %></p>
+    <% end %>
+  </div>
+</div>
