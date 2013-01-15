@@ -7,7 +7,7 @@ module Brock
   class FieldTypeNotSupported < StandardError
   end
 
-  class Manifest
+  class Schema
 
     attr_reader :fields
 
@@ -24,10 +24,10 @@ module Brock
       end
     end
 
-    def initialize(definitions)
-      @fields = definitions.map do |definition|
-        klass = self.class.field_for_type(definition.fetch('type'))
-        klass.new(definition)
+    def initialize(raw_fields)
+      @fields = raw_fields.map do |raw_field|
+        klass = self.class.field_for_type(raw_field.fetch('type'))
+        klass.new(raw_field)
       end
     end
 

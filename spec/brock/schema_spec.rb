@@ -1,7 +1,7 @@
 require 'spec_helper'
-require 'brock/manifest'
+require 'brock/schema'
 
-describe Brock::Manifest do
+describe Brock::Schema do
 
   let(:data) {
     [
