@@ -1,4 +1,4 @@
-require 'brock/definition'
+require 'brock/manifest'
 require 'brock/version'
 
 module Brock
@@ -7,12 +7,12 @@ module Brock
     VERSION
   end
 
-  def self.to_html(definition, values, options={})
-    Definition.new(definition).to_html(values)
+  def self.to_html(manifest, values, options={})
+    Manifest.new(definition).to_html(values)
   end
 
-  def self.parse_params(defintion, params)
-    Definition.new(defintion).parse_paras(params)
+  def self.parse_params(manifest, params)
+    Manifest.new(defintion).parse_paras(params)
   end
 
 end

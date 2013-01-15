@@ -7,7 +7,7 @@ module Brock
   class FieldTypeNotSupported < StandardError
   end
 
-  class Definition
+  class Manifest
 
     attr_reader :fields
 
