@@ -12,6 +12,18 @@ describe Brock::BooleanField do
 
   it_behaves_like "a field"
 
+  describe ".detect" do
+
+    it "picks fields with type boolean" do
+      expect(described_class.detect('type' => 'boolean'))
+    end
+
+    it "picks fields with boolean defaults" do
+      expect(described_class.detect('default' => true))
+    end
+
+  end
+
   describe "#parse_param" do
 
     it "works with 1" do

@@ -30,9 +30,5 @@ describe Brock::Schema do
     expect { subject }.to_not raise_error(Brock::FieldTypeNotSupported)
   end
 
-  it "defaults types to string" do
-    expect(described_class.field_for_type(nil)).to eq(Brock::StringField)
-  end
-
 end
 

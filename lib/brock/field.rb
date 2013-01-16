@@ -13,6 +13,10 @@ module Brock
 
     attr_reader :description
 
+    def self.detect(params)
+      params['type'] == type.to_s
+    end
+
     def initialize(params = {})
       @name = params.fetch('name').to_sym
       @label = params.fetch('label')

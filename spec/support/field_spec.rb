@@ -12,6 +12,10 @@ shared_examples "a field" do
     expect(described_class.type).to be_a(Symbol)
   end
 
+  it '.detect with same type' do
+    expect(described_class.detect('type' => described_class.type.to_s))
+  end
+
   it "#name is a symbol" do
     expect(subject.name).to be_a(Symbol)
   end

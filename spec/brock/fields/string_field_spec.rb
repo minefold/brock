@@ -13,6 +13,14 @@ describe Brock::StringField do
 
   it_behaves_like "a field"
 
+  describe ".detect" do
+
+    it "is true for fields without a type" do
+      expect(described_class.detect({}))
+    end
+
+  end
+
   describe "#parse_param" do
 
     it "works with string" do

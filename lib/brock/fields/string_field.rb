@@ -7,6 +7,10 @@ module Brock
       :string
     end
 
+    def self.detect(field)
+      super(field) or not field.has_key?('type')
+    end
+
     def parse_param(value)
       value.to_s
     end
