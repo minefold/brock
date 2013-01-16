@@ -17,11 +17,12 @@ module Brock
       StringField
     ]
 
+    def self.field_for(raw)
+      FIELD_TYPES.find {|type| type.detect(raw) }.new(raw)
+    end
+
     def initialize(raw_fields)
-      @fields = raw_fields.map do |raw_field|
-        klass = FIELD_TYPES.find {|type| type.detect(raw_field) }
-        klass.new(raw_field)
-      end
+      @fields = raw_fields.map {|raw_field| field_for(raw_field) }
     end
 
     def to_html(values = {})

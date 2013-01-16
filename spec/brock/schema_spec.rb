@@ -30,5 +30,13 @@ describe Brock::Schema do
     expect { subject }.to_not raise_error(Brock::FieldTypeNotSupported)
   end
 
+  {
+    {"name" => "chat"} => Brock::StringField,
+  }.each do |raw, klass|
+    it ".field_for matches a shortcut to #{klass}" do
+      described_class.field_for(raw).should be_a(klass)
+    end
+  end
+
 end
 
