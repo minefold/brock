@@ -17,12 +17,12 @@ module Brock
       params['type'] == type.to_s
     end
 
-    def initialize(params = {})
-      @name = params.fetch('name').to_sym
+    def self.new_from_params(params)
+      new(params.fetch('name'), params)
+    end
 
-      @label = params['label']
-      @default = params['default']
-      @description = params['description']
+    def initialize(name, params = {})
+      @name, @params = name.to_sym, params
     end
 
     def to_html(value=nil)
@@ -34,7 +34,16 @@ module Brock
     end
 
     def label
-      @label || name.gsub(/[^[:alnum:]]+/,' ').sub(/^(.)/) {|l| l.upcase }
+      @params['label'] or
+      name.to_s.gsub(/[^[:alnum:]]+/,' ').sub(/^(.)/) {|l| l.upcase }
+    end
+
+    def default
+      @params['default']
+    end
+
+    def description
+      @params['description']
     end
 
   end

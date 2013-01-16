@@ -1,0 +1,24 @@
+<div class="control-group brock-field brock-field-enum">
+  <div class="control-label">
+    <%= label %>
+  </div>
+
+  <div class="controls">
+    <% values.each do |value| %>
+      <label class="radio brock-label">
+        <input class="brock-field"
+               type="radio"
+               name="brock[espresso]"
+               value="<%= value['value'] %>"
+               <% if value['value'] == default %>
+                 checked
+               <% end %>
+        />
+        <%= value['label'] %>
+        <% if value['description'] %>
+          <p class="help-block"><%= value['description'] %></p>
+        <% end %>
+      </label>
+    <% end %>
+  </div>
+</div>

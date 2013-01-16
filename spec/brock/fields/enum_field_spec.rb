@@ -1,9 +1,14 @@
 require 'spec_helper'
-require 'brock/fields/integer_field'
+require 'brock/fields/enum_field'
 
-describe Brock::IntegerField do
+describe Brock::EnumField do
 
-  subject { described_class.new(:espresso) }
+  subject {
+    described_class.new(:espresso, 'values' => [
+      {'value' => '0', 'label' => 'No'},
+      {'value' => '1', 'label' => 'Yes'}
+    ])
+  }
 
   it_behaves_like "a field"
 

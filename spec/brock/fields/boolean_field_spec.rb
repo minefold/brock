@@ -3,12 +3,7 @@ require 'brock/fields/boolean_field'
 
 describe Brock::BooleanField do
 
-  subject {
-    described_class.new(
-      'name' => 'team_balance',
-      'label' => 'Auto team balance'
-    )
-  }
+  subject { described_class.new(:espresso) }
 
   it_behaves_like "a field"
 
@@ -43,11 +38,7 @@ describe Brock::BooleanField do
   describe "#default" do
 
     it "can be set in the constructor" do
-      subject = described_class.new(
-        'name' => 'team_balance',
-        'label' => 'Auto team balance',
-        'default' => false
-      )
+      subject = described_class.new(:latte, 'default' => false)
       expect(subject.default).to be_false
     end
 

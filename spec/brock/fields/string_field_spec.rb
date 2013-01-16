@@ -3,13 +3,7 @@ require 'brock/fields/string_field'
 
 describe Brock::StringField do
 
-  subject {
-    described_class.new(
-      'type' => 'string',
-      'name' => 'first_name',
-      'label' => 'First name'
-    )
-  }
+  subject { described_class.new(:espresso) }
 
   it_behaves_like "a field"
 

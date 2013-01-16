@@ -18,7 +18,7 @@ module Brock
     ]
 
     def self.field_for(raw)
-      FIELD_TYPES.find {|type| type.detect(raw) }.new(raw)
+      FIELD_TYPES.detect {|type| type.detect(raw) }.new_from_params(raw)
     end
 
     def initialize(raw_fields)

@@ -8,10 +8,10 @@ module Brock
     end
 
     def default
-      if @default.nil?
-        true
+      if @params.has_key?('default')
+        @params['default']
       else
-        @default
+        true
       end
     end
 
