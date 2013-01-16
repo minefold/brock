@@ -27,7 +27,7 @@ module Brock
     end
 
     def path
-      File.join(self.class.share_path, "#{field.type}_field.erb")
+      File.join(self.class.share_path, "#{field.class.type}_field.erb")
     end
 
   end

@@ -3,7 +3,7 @@ require 'brock/field'
 module Brock
   class StringField < Field
 
-    def type
+    def self.type
       :string
     end
 

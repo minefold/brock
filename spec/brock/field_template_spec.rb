@@ -23,7 +23,7 @@ describe Brock::FieldTemplate do
   end
 
   it "figures out the correct path" do
-    field.stub(type: 'string')
+    field.stub(class: stub(type: 'string'))
     subject.class.stub(:share_path) { '/' }
     expect(subject.path).to eq('/string_field.erb')
   end

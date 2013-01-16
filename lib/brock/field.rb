@@ -26,7 +26,7 @@ module Brock
     end
 
     def parse_param(value)
-      raise ParamParseError
+      raise ParamParseError.new(value)
     end
 
   end

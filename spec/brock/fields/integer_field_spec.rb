@@ -7,18 +7,11 @@ describe Brock::IntegerField do
     described_class.new(
       'type' => 'integer',
       'name' => 'rounds',
-      'label' => 'Rounds',
-      'default' => 10
+      'label' => 'Rounds'
     )
   }
 
-  it "has :integer type" do
-    expect(subject.type).to eq(:integer)
-  end
-
-  it "#to_html works" do
-    expect(subject.to_html(5)).to be_similar_to_fixture('integer_field.html')
-  end
+  it_behaves_like "a field"
 
   describe "#parse_param" do
 
@@ -37,4 +30,9 @@ describe Brock::IntegerField do
     end
 
   end
+
+  it "#default is optional" do
+    expect(subject.default).to eq(nil)
+  end
+
 end

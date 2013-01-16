@@ -10,13 +10,7 @@ describe Brock::BooleanField do
     )
   }
 
-  it "has :boolean type" do
-    expect(subject.type).to eq(:boolean)
-  end
-
-  it "#to_html works" do
-    expect(subject.to_html(false)).to be_similar_to_fixture('boolean_field.html')
-  end
+  it_behaves_like "a field"
 
   describe "#parse_param" do
 

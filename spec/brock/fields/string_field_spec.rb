@@ -7,18 +7,11 @@ describe Brock::StringField do
     described_class.new(
       'type' => 'string',
       'name' => 'first_name',
-      'label' => 'First name',
-      'default' => 'Chris'
+      'label' => 'First name'
     )
   }
 
-  it "has :string type" do
-    expect(subject.type).to eq(:string)
-  end
-
-  it "#to_html works" do
-    expect(subject.to_html(5)).to be_similar_to_fixture('string_field.html')
-  end
+  it_behaves_like "a field"
 
   describe "#parse_param" do
 
@@ -32,4 +25,9 @@ describe Brock::StringField do
     end
 
   end
+
+  it "#default is optional" do
+    expect(subject.default).to eq(nil)
+  end
+
 end

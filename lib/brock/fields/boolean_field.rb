@@ -3,7 +3,7 @@ require 'brock/field'
 module Brock
   class BooleanField < Field
 
-    def type
+    def self.type
       :boolean
     end
 
