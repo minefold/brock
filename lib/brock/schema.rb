@@ -17,7 +17,7 @@ module Brock
         BooleanField
       when 'integer'
         IntegerField
-      when 'string'
+      when 'string', nil
         StringField
       else
         raise FieldTypeNotSupported
@@ -26,7 +26,7 @@ module Brock
 
     def initialize(raw_fields)
       @fields = raw_fields.map do |raw_field|
-        klass = self.class.field_for_type(raw_field.fetch('type'))
+        klass = self.class.field_for_type(raw_field['type'])
         klass.new(raw_field)
       end
     end

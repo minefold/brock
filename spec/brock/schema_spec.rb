@@ -16,6 +16,10 @@ describe Brock::Schema do
         "type" => "boolean",
         "label" => "Auto Team Balance",
         "default" => true
+      }, {
+        "name" => "first_name",
+        "label" => "First name",
+        "default" => "Chris"
       }
     ]
   }
@@ -24,6 +28,10 @@ describe Brock::Schema do
 
   it "initializes fields" do
     expect { subject }.to_not raise_error(Brock::FieldTypeNotSupported)
+  end
+
+  it "defaults types to string" do
+    expect(described_class.field_for_type(nil)).to eq(Brock::StringField)
   end
 
 end
