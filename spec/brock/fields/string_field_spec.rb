@@ -12,6 +12,10 @@ describe Brock::StringField do
     )
   }
 
+  it "has :string type" do
+    expect(subject.type).to eq(:string)
+  end
+
   it "#to_html works" do
     expect(subject.to_html(5)).to be_similar_to_fixture('string_field.html')
   end

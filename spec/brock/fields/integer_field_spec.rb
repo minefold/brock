@@ -12,6 +12,10 @@ describe Brock::IntegerField do
     )
   }
 
+  it "has :integer type" do
+    expect(subject.type).to eq(:integer)
+  end
+
   it "#to_html works" do
     expect(subject.to_html(5)).to be_similar_to_fixture('integer_field.html')
   end

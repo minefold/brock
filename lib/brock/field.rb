@@ -14,7 +14,6 @@ module Brock
     attr_reader :description
 
     def initialize(params = {})
-      @type = params.fetch('type').to_sym
       @name = params.fetch('name').to_sym
       @label = params.fetch('label')
       @default = params.fetch('default')

@@ -5,12 +5,15 @@ describe Brock::BooleanField do
 
   subject {
     described_class.new(
-      'type' => 'boolean',
       'name' => 'team_balance',
       'label' => 'Auto team balance',
       'default' => true
     )
   }
+
+  it "has :boolean type" do
+    expect(subject.type).to eq(:boolean)
+  end
 
   it "#to_html works" do
     expect(subject.to_html(false)).to be_similar_to_fixture('boolean_field.html')
