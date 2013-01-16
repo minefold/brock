@@ -6,8 +6,7 @@ describe Brock::BooleanField do
   subject {
     described_class.new(
       'name' => 'team_balance',
-      'label' => 'Auto team balance',
-      'default' => true
+      'label' => 'Auto team balance'
     )
   }
 
@@ -34,4 +33,22 @@ describe Brock::BooleanField do
     end
 
   end
+
+  describe "#default" do
+
+    it "can be set in the constructor" do
+      subject = described_class.new(
+        'name' => 'team_balance',
+        'label' => 'Auto team balance',
+        'default' => false
+      )
+      expect(subject.default).to be_false
+    end
+
+    it "defaults to true" do
+      expect(subject.default)
+    end
+
+  end
+
 end

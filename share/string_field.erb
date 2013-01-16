@@ -4,7 +4,9 @@
     <input class="brock-field"
            type="text"
            name="brock[<%= name %>]"
-           placeholder="<%= default %>"
+           <% if default %>
+             placeholder="<%= default %>"
+           <% end %>
            <% if value %>
              value="<%= value %>"
            <% end %>

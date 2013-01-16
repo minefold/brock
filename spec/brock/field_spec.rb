@@ -6,8 +6,7 @@ describe Brock::Field do
   subject {
     described_class.new(
       'name' => 'a',
-      'label' => 'A',
-      'default' => 'a'
+      'label' => 'A'
     )
   }
 
@@ -19,6 +18,10 @@ describe Brock::Field do
     expect {
       subject.parse_param(nil)
     }.to raise_error(Brock::ParamParseError)
+  end
+
+  it "defaults are optional" do
+    expect(subject.default).to eq(nil)
   end
 
 end

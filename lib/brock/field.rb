@@ -16,8 +16,8 @@ module Brock
     def initialize(params = {})
       @name = params.fetch('name').to_sym
       @label = params.fetch('label')
-      @default = params.fetch('default')
 
+      @default = params['default']
       @description = params['description']
     end
 
