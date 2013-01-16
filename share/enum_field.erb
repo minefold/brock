@@ -8,9 +8,9 @@
       <label class="radio brock-label">
         <input class="brock-field"
                type="radio"
-               name="brock[espresso]"
+               name="brock[<%= name %>]"
                value="<%= value['value'] %>"
-               <% if value['value'] == default %>
+               <% if value == value['value'] or (not value and value['value'] == default) %>
                  checked
                <% end %>
         />
