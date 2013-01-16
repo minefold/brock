@@ -1,4 +1,5 @@
 require 'brock/fields/boolean_field'
+require 'brock/fields/enum_field'
 require 'brock/fields/integer_field'
 require 'brock/fields/string_field'
 
@@ -12,6 +13,7 @@ module Brock
     attr_reader :fields
 
     FIELD_TYPES = [
+      EnumField,
       IntegerField,
       BooleanField,
       StringField
