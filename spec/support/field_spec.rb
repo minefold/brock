@@ -20,6 +20,12 @@ shared_examples "a field" do
     expect(subject.name).to be_a(Symbol)
   end
 
+  it "#label is optional" do
+    subject.instance_variable_set('@label', nil)
+    subject.stub(name: 'mp_tag')
+    expect(subject.label).to eq('Mp tag')
+  end
+
   it "#to_html matches the fixture" do
     scrubbed_html = scrub_html(subject.to_html)
     scrubbed_fixture = scrub_html(fixture(default_fixture))

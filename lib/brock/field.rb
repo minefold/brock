@@ -19,8 +19,8 @@ module Brock
 
     def initialize(params = {})
       @name = params.fetch('name').to_sym
-      @label = params.fetch('label')
 
+      @label = params['label']
       @default = params['default']
       @description = params['description']
     end
@@ -31,6 +31,10 @@ module Brock
 
     def parse_param(value)
       raise ParamParseError.new(value)
+    end
+
+    def label
+      @label || name.gsub(/[^[:alnum:]]+/,' ').sub(/^(.)/) {|l| l.upcase }
     end
 
   end
