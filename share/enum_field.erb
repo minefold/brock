@@ -4,19 +4,19 @@
   </div>
 
   <div class="controls">
-    <% values.each do |value| %>
+    <% values.each do |v| %>
       <label class="radio brock-label">
         <input class="brock-field"
                type="radio"
                name="brock[<%= name %>]"
-               value="<%= value['value'] %>"
-               <% if value == value['value'] or (not value and value['value'] == default) %>
+               value="<%= v['value'] %>"
+               <% if value == v['value'] or (not value and v['value'] == default) %>
                  checked
                <% end %>
         />
-        <%= value['label'] %>
-        <% if value['description'] %>
-          <p class="help-block"><%= value['description'] %></p>
+        <%= v['label'] %>
+        <% if v['description'] %>
+          <p class="help-block"><%= v['description'] %></p>
         <% end %>
       </label>
     <% end %>
