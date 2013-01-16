@@ -24,7 +24,7 @@ module Brock
     end
 
     def initialize(raw_fields)
-      @fields = raw_fields.map {|raw_field| field_for(raw_field) }
+      @fields = raw_fields.map {|raw_field| self.class.field_for(raw_field) }
     end
 
     def to_html(values = {})
