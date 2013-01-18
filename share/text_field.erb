@@ -6,11 +6,7 @@
            <% if default %>
              placeholder="<%= default %>"
            <% end %>
-    />
-      <% if value %>
-        <%= value %>
-      <% end %>
-    </textarea>
+    /><% if value %><%= value %><% end %></textarea>
 
     <% if description %>
       <p class="help-block brock-description"><%= description %></p>
