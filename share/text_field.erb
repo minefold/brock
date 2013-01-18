@@ -1,0 +1,19 @@
+<div class="control-group brock-field brock-field-text">
+  <label class="control-label brock-label"><%= label %></label>
+  <div class="controls">
+    <textarea class="brock-field"
+           name="brock[<%= name %>]"
+           <% if default %>
+             placeholder="<%= default %>"
+           <% end %>
+    />
+      <% if value %>
+        <%= value %>
+      <% end %>
+    </textarea>
+
+    <% if description %>
+      <p class="help-block brock-description"><%= description %></p>
+    <% end %>
+  </div>
+</div>

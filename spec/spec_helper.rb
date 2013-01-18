@@ -1,4 +1,4 @@
-Dir["./spec/support/**/*.rb"].sort.each {|f| require f}
+Dir["./spec/support/**/*.rb"].sort.each {|f| require f }
 
 RSpec.configure do |config|
   config.include(FixtureHelpers)

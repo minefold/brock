@@ -7,6 +7,12 @@ describe Brock::BooleanField do
 
   it_behaves_like "a field"
 
+  it "asdf" do
+
+    expect(subject.to_html(true)).to match(/checked/)
+
+  end
+
   describe ".detect" do
 
     it "picks fields with type boolean" do
@@ -20,6 +26,10 @@ describe Brock::BooleanField do
   end
 
   describe "#parse_param" do
+
+    it "works with on" do
+      expect(subject.parse_param('on')).to eq(true)
+    end
 
     it "works with 1" do
       expect(subject.parse_param('1')).to eq(true)

@@ -1,31 +1,18 @@
 require 'spec_helper'
-require 'brock/fields/enum_field'
+require 'brock/fields/text_field'
 
-describe Brock::EnumField do
+describe Brock::TextField do
 
   subject {
-    described_class.new(:espresso, 'values' => [
-      {'value' => '0', 'label' => 'No'},
-      {'value' => '1', 'label' => 'Yes'}
-    ])
+    described_class.new(:whitelist)
   }
 
   it_behaves_like "a field"
 
   describe "#parse_param" do
 
-    it "works with an integer" do
-      expect(subject.parse_param(10)).to eq(10)
-    end
-
-    it "works with an integer-like string" do
-      expect(subject.parse_param('10')).to eq(10)
-    end
-
-    it "raises with anything else" do
-      expect {
-        subject.parse_param('boom')
-      }.to raise_error(Brock::ParamParseError)
+    it "works with string" do
+      expect(subject.parse_param('foo')).to eq('foo')
     end
 
   end

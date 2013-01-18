@@ -1,6 +1,6 @@
 require 'brock/fields/boolean_field'
-require 'brock/fields/enum_field'
 require 'brock/fields/integer_field'
+require 'brock/fields/select_field'
 require 'brock/fields/string_field'
 
 module Brock
@@ -13,14 +13,20 @@ module Brock
     attr_reader :fields
 
     FIELD_TYPES = [
-      EnumField,
       IntegerField,
       BooleanField,
+      TextField,
+      SelectField,
       StringField
     ]
 
     def self.field_for(raw)
-      FIELD_TYPES.detect {|type| type.detect(raw) }.new_from_params(raw)
+      klass = FIELD_TYPES.detect {|type| type.detect(raw) }
+      if klass
+        klass.new_from_params(raw)
+      else
+        raise FieldTypeNotSupported.new(raw)
+      end
     end
 
     def initialize(raw_fields)
@@ -29,14 +35,13 @@ module Brock
 
     def to_html(values = {})
       fields.map do |field|
-        field.to_html(values[field.name])
+        field.to_html(values[field.name.to_s])
       end.join("\n")
     end
 
     def parse_params(params)
-      params.each_with_object({}) do |(name, value), settings|
-        field = field_with_name(name)
-        settings[field.name] = field.parse_param(value)
+      fields.each_with_object({}) do |field, settings|
+        settings[field.name] = field.parse_param(params[field.name])
       end
     end
 

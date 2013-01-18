@@ -32,7 +32,8 @@ describe Brock::Schema do
 
   {
     {"name" => "a"} => Brock::StringField,
-    {"name" => "a", "type" =>  "integer", "values" => []} => Brock::EnumField
+    {"name" => "a", "values" => []} => Brock::SelectField,
+    {"name" => "a", "type" => "string", "values" => []} => Brock::SelectField
   }.each do |raw, klass|
     it ".field_for matches a shortcut to #{klass}" do
       described_class.field_for(raw).should be_a(klass)
