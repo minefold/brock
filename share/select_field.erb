@@ -14,7 +14,7 @@
                  checked
                <% end %>
         />
-        <%= v['label'] %>
+        <%= v['label'] || v['value'] %>
         <% if v['description'] %>
           <p class="help-block"><%= v['description'] %></p>
         <% end %>
