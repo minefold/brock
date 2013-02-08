@@ -3,7 +3,7 @@ require 'brock/fields/integer_field'
 
 describe Brock::IntegerField do
 
-  subject { described_class.new(:espresso) }
+  subject { described_class.new(:espresso, 'default' => 1337) }
 
   it_behaves_like "a field"
 
@@ -24,9 +24,4 @@ describe Brock::IntegerField do
     end
 
   end
-
-  it "#default is optional" do
-    expect(subject.default).to eq(nil)
-  end
-
 end
