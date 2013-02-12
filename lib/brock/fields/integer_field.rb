@@ -8,7 +8,11 @@ module Brock
     end
 
     def parse_param(value)
-      Integer(value)
+      if value == '' || value.nil?
+        default
+      else
+        Integer(value)
+      end
     rescue ArgumentError, TypeError
       super(value)
     end

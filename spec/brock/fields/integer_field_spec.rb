@@ -17,6 +17,10 @@ describe Brock::IntegerField do
       expect(subject.parse_param('10')).to eq(10)
     end
 
+    it "works with default" do
+      expect(subject.parse_param('')).to eq(1337)
+    end
+
     it "raises with anything else" do
       expect {
         subject.parse_param('boom')
