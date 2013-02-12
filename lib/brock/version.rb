@@ -1,5 +1,5 @@
 module Brock
-  VERSION = '0.1.4'
+  VERSION = '0.1.5'
 
   def self.version
     VERSION
