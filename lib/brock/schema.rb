@@ -34,6 +34,12 @@ module Brock
       @fields = raw_fields.map {|raw_field| self.class.field_for(raw_field) }
     end
 
+    def to_hash(values = {})
+      fields.each_with_object({}) do |field, hash|
+        hash[field.name.to_s] = values[field.name.to_s] || field.default
+      end
+    end
+
     def to_html(values = {})
       fields.map do |field|
         field.to_html(values[field.name.to_s])

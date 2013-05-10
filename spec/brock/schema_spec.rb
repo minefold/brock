@@ -40,5 +40,21 @@ describe Brock::Schema do
     end
   end
 
+  it "#to_hash" do
+    expect(subject.to_hash).to eq(
+      'mp_maxrounds' => 5,
+      'mp_autoteambalance' => true,
+      'first_name' => 'Chris'
+    )
+  end
+
+  it "#to_hash takes params" do
+    expect(subject.to_hash('first_name' => 'Dave')).to eq(
+      'mp_maxrounds' => 5,
+      'mp_autoteambalance' => true,
+      'first_name' => 'Dave'
+    )
+  end
+
 end
 
