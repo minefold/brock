@@ -1,23 +1,21 @@
 require 'brock/field'
 
 module Brock
-  class BooleanField < Field
+  module Fields
+    class BooleanField < Field
 
-    def self.type
-      :boolean
-    end
-
-    def default
-      if @params.has_key?('default')
-        @params['default']
-      else
-        true
+      def load(val)
+        val == "true"
       end
-    end
 
-    def parse_param(value)
-      value == 'on' || value == '1' || value == 'true' || value == true
-    end
+      def default
+        if @params.has_key?('default')
+          @params['default']
+        else
+          true
+        end
+      end
 
+    end
   end
 end

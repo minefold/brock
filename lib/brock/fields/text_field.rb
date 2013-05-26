@@ -1,15 +1,8 @@
-require 'brock/field'
+require 'brock/fields/string_field'
 
 module Brock
-  class TextField < Field
-
-    def self.type
-      :text
+  module Fields
+    class TextField < StringField
     end
-
-    def parse_param(value)
-      value.to_s
-    end
-
   end
 end

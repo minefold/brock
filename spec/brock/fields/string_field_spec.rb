@@ -1,35 +1,15 @@
 require 'spec_helper'
-require 'brock/fields/string_field'
+require 'brock/fields/Text_field'
 
-describe Brock::StringField do
+describe Brock::Fields::TextField do
+  subject { described_class.new(:whitelist) }
 
-  subject { described_class.new(:espresso) }
+  describe "#default" do
 
-  it_behaves_like "a field"
-
-  describe ".detect" do
-
-    it "is true for fields without a type" do
-      expect(described_class.detect({}))
+    it "defaults to an empty string" do
+      expect(subject.default).to eq('')
     end
 
-  end
-
-  describe "#parse_param" do
-
-    it "works with string" do
-      expect(subject.parse_param('foo')).to eq('foo')
-    end
-
-    it "calls to_s on other objects" do
-      obj = stub(to_s: 'sentinal')
-      expect(subject.parse_param(obj)).to eq('sentinal')
-    end
-
-  end
-
-  it "#default is optional" do
-    expect(subject.default).to eq(nil)
   end
 
 end

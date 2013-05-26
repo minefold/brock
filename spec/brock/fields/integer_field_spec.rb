@@ -1,31 +1,27 @@
 require 'spec_helper'
 require 'brock/fields/integer_field'
 
-describe Brock::IntegerField do
+describe Brock::Fields::IntegerField do
+  subject { described_class.new(:espresso) }
 
-  subject { described_class.new(:espresso, 'default' => 1337) }
+  describe "#load" do
 
-  it_behaves_like "a field"
-
-  describe "#parse_param" do
-
-    it "works with an integer" do
-      expect(subject.parse_param(10)).to eq(10)
+    it "returns an integer" do
+      expect(subject.load("123")).to eq(123)
     end
 
-    it "works with an integer-like string" do
-      expect(subject.parse_param('10')).to eq(10)
-    end
-
-    it "works with default" do
-      expect(subject.parse_param('')).to eq(1337)
-    end
-
-    it "raises with anything else" do
-      expect {
-        subject.parse_param('boom')
-      }.to raise_error(Brock::ParamParseError)
+    it "returns the default if input is invalid" do
+      expect(subject.load("invalid")).to eq(0)
     end
 
   end
+
+  describe "#default" do
+
+    it "defaults to 0" do
+      expect(subject.default).to eq(0)
+    end
+
+  end
+
 end

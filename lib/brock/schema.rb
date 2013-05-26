@@ -1,61 +1,36 @@
-require 'brock/fields/boolean_field'
-require 'brock/fields/integer_field'
-require 'brock/fields/select_field'
-require 'brock/fields/string_field'
-require 'brock/fields/text_field'
+require 'brock/fields'
 
 module Brock
-
-  class FieldTypeNotSupported < StandardError
-  end
 
   class Schema
 
     attr_reader :fields
 
-    FIELD_TYPES = [
-      IntegerField,
-      BooleanField,
-      TextField,
-      SelectField,
-      StringField
-    ]
-
-    def self.field_for(raw)
-      klass = FIELD_TYPES.detect {|type| type.detect(raw) }
-      if klass
-        klass.new_from_params(raw)
+    def self.build_field(raw_field)
+      case raw_field.delete('type')
+      when 'boolean'
+        Fields::BooleanField
+      when 'integer'
+        Fields::IntegerField
+      when 'option'
+        Fields::OptionField
+      when 'text'
+        Fields::TextField
       else
-        raise FieldTypeNotSupported.new(raw)
-      end
+        Fields::StringField
+      end.build(raw_field)
     end
 
-    def initialize(raw_fields)
-      @fields = raw_fields.map {|raw_field| self.class.field_for(raw_field) }
+    def self.build(data)
+      new(data.map {|field| build_field(field) })
     end
 
-    def to_hash(values = {})
-      fields.each_with_object({}) do |field, hash|
-        hash[field.name.to_s] = values[field.name.to_s] || field.default
-      end
+    def initialize(fields)
+      @fields = fields
     end
 
-    def to_html(values = {})
-      fields.map do |field|
-        field.to_html(values[field.name.to_s])
-      end.join("\n")
-    end
-
-    def parse_params(params)
-      fields.each_with_object({}) do |field, settings|
-        settings[field.name] = field.parse_param(params[field.name])
-      end
-    end
-
-  # private
-
-    def field_with_name(name)
-      fields.find {|field| field.name == name.to_sym }
+    def has_field?(name)
+      @fields.any? {|field| field.name == name.to_s }
     end
 
   end

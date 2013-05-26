@@ -1,49 +1,42 @@
-require 'brock/field_template'
-
 module Brock
-  class ParamParseError < ArgumentError
-  end
-
   class Field
 
-    attr_reader :type
-    attr_reader :name
-    attr_reader :label
-    attr_reader :default
-
-    attr_reader :description
-
-    def self.detect(params)
-      params['type'] == type.to_s
+    class MissingNameError < ArgumentError
     end
 
-    def self.new_from_params(params)
-      new(params.fetch('name'), params)
+    attr_reader :name
+
+    attr_reader :default
+    attr_reader :description
+
+    def self.build(field)
+      name = field.delete('name') or raise MissingNameError
+      new(name, field)
+    end
+
+    def self.format_label(name)
+      name.gsub(/[^[:alnum:]]+/, ' ').sub(/^(.)/) {|l| l.upcase }
     end
 
     def initialize(name, params = {})
-      @name, @params = name.to_sym, params
-    end
-
-    def to_html(value=nil)
-      FieldTemplate.new(self).render(value)
-    end
-
-    def parse_param(value)
-      raise ParamParseError.new(value)
+      @name, @params = name.to_s, params
+      @label = @params['label']
+      @default = @params['default']
+      @description = @params['description']
     end
 
     def label
-      @params['label'] or
-      name.to_s.gsub(/[^[:alnum:]]+/,' ').sub(/^(.)/) {|l| l.upcase }
+      @label or self.class.format_label(name)
     end
 
-    def default
-      @params['default']
+    # Loads in raw values stored on disk in string form
+    def load(raw)
+      raw
     end
 
-    def description
-      @params['description']
+    # Dumps a value out to format supported on disk
+    def dump(val)
+      (val || default).to_s
     end
 
   end

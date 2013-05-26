@@ -1,20 +1,21 @@
 # Brock
+[![Build Status](https://travis-ci.org/minefold/brock.png?branch=master)](https://travis-ci.org/minefold/brock)
 
-![Brock](http://upload.wikimedia.org/wikipedia/en/7/71/DP-Brock.png)
+Loads and dumps settings based on the [Minefold](https://minefold.com) Funpack schema format.
 
-Generate HTML from definitions. Generate settings from params.
-
-    template = Brock.new([
+    schema = Brock::Schema.new([
       { name: 'mp_maxrounds',
         type: 'integer',
-        label: 'Max Round',
         description: 'Maximum number of rounds to play',
         default: 5
       }
     ])
 
-    template.to_html('mp_maxrounds' => 2) # => "<html>...</html>"
-    template.parse_params('mp_maxrounds' => 2) # => {'mp_maxrounds' => 10}
+    Brock::Settings.new(schema).load('mp_maxrounds' => '10')
+    # => {'mp_maxrounds' => 10}
+
+    Brock::Settings.new(schema).dump('mp_maxrounds' => '10')
+    # => {'mp_maxrounds' => 10}
 
 
 ## License

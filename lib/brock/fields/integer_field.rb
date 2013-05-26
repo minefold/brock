@@ -1,21 +1,19 @@
 require 'brock/field'
 
 module Brock
-  class IntegerField < Field
+  module Fields
+    class IntegerField < Field
 
-    def self.type
-      :integer
-    end
-
-    def parse_param(value)
-      if value == '' || value.nil?
+      def load(val)
+        Integer(val)
+      rescue ArgumentError
         default
-      else
-        Integer(value)
       end
-    rescue ArgumentError, TypeError
-      super(value)
-    end
 
+      def default
+        0
+      end
+
+    end
   end
 end

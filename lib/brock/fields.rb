@@ -1,0 +1,5 @@
+require 'brock/fields/boolean_field'
+require 'brock/fields/integer_field'
+require 'brock/fields/option_field'
+require 'brock/fields/string_field'
+require 'brock/fields/text_field'
