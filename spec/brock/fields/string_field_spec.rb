@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'brock/fields/Text_field'
+require 'brock/fields/text_field'
 
 describe Brock::Fields::TextField do
   subject { described_class.new(:whitelist) }
